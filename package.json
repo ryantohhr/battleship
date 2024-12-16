@@ -1,7 +1,7 @@
 {
-  "name": "template-repo",
+  "name": "battleship",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "ship.js",
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
@@ -12,7 +12,10 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
     "@eslint/js": "^9.15.0",
+    "babel-jest": "^29.7.0",
     "css-loader": "^7.1.2",
     "eslint": "^9.15.0",
     "globals": "^15.12.0",
