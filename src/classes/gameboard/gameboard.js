@@ -4,11 +4,11 @@ export default class Gameboard {
     constructor(mode) {
         this.mode = mode;
         // Generate ships
-        this.carrier = new Ship(5);
-        this.battleship = new Ship(4);
-        this.cruiser = new Ship(3);
-        this.submarine = new Ship(3);
-        this.destroyer = new Ship(2);
+        this.carrier = new Ship("carrier", 5);
+        this.battleship = new Ship("battleship", 4);
+        this.cruiser = new Ship("cruiser", 3);
+        this.submarine = new Ship("submarine", 3);
+        this.destroyer = new Ship("destroyer", 2);
 
         this.board = [];
         this.generateBoard();
@@ -70,6 +70,7 @@ export default class Gameboard {
                 if (cell && !cell.hasShip) {
                     cell.ship = ship;
                     cell.hasShip = true;
+                    cell.shipName = ship.name;
                 }
             }
         } else {
@@ -81,6 +82,7 @@ export default class Gameboard {
                 if (cell && !cell.hasShip) {
                     cell.ship = ship;
                     cell.hasShip = true;
+                    cell.shipName = ship.name;
                 }
             }
         }
@@ -95,6 +97,7 @@ export default class Gameboard {
             if (cell && !cell.hasShip) {
                 cell.ship = ship;
                 cell.hasShip = true;
+                cell.shipName = ship.name;
             }
         }
     }
@@ -128,6 +131,7 @@ class Cell {
         this.coords = coords;
         this.hasShip = false;
         this.ship = null;
+        this.shipName = null;
         this.hit = false;
     }
 }
