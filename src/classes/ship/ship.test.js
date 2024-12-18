@@ -3,7 +3,7 @@ import Ship from './ship.js';
 let testShip;
 
 beforeEach(() => {
-    testShip = new Ship(3);
+    testShip = new Ship("carrier", 3);
 })
 
 test("accepts a hit", () => {
