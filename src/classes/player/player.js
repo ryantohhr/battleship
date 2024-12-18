@@ -1,6 +1,7 @@
 export default class Player {
-    constructor(name, gameboard) {
+    constructor(name, id, gameboard) {
         this.name = name;
+        this.id = id;
         this.gameboard = gameboard;
         this.hitCells = [];
     }

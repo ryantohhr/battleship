@@ -5,7 +5,7 @@ let player;
 
 beforeAll(() => {
     const gameboard = new Gameboard("test");
-    player = new Player("Ryan", gameboard);
+    player = new Player("Ryan", 1, gameboard);
     player.attack(0, 0);
     player.attack(0, 1);
     player.attack(0, 2);
