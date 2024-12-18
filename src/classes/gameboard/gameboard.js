@@ -16,24 +16,26 @@ export default class Gameboard {
 
     receiveAttack(...coords) {
         const cell = this.board[coords[0]][coords[1]];
+        const attackData = [];
         cell.hit = true;
         if (this.checkCoords(coords)) {
             cell.ship.hit();
+            attackData.push("hit");
+        } else {
+            attackData.push("miss");
         }
         
         if (this.mode === "test") {
             return this.carrier.isSunk();
         } else {
-            if (this.carrier.isSunk() &&
+            attackData.push(this.carrier.isSunk() &&
             this.battleship.isSunk() &&
             this.cruiser.isSunk() &&
             this.submarine.isSunk() &&
-            this.destroyer.isSunk()) {
-                return true;
-            } else {
-                return false;
-            }
+            this.destroyer.isSunk());
         }
+
+        return attackData;
     }
 
     generateBoard() {
@@ -65,7 +67,7 @@ export default class Gameboard {
             while (!start || start[1] + ship.length > 9 || !this.checkVacancy(start, ship.length, axis)) {
                 start = [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
             }
-            for (let i = 0; i < ship.length - 1; i++) {
+            for (let i = 0; i < ship.length; i++) {
                 cell = this.board[start[0]][start[1] + i];
                 if (cell && !cell.hasShip) {
                     cell.ship = ship;
@@ -77,7 +79,7 @@ export default class Gameboard {
             while (!start || start[0] + ship.length > 9 || !this.checkVacancy(start, ship.length, axis)) {
                 start = [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
             }
-            for (let i = 0; i < ship.length - 1; i++) {
+            for (let i = 0; i < ship.length; i++) {
                 cell = this.board[start[0] + i][start[1]];
                 if (cell && !cell.hasShip) {
                     cell.ship = ship;
